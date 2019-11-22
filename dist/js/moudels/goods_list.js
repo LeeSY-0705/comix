@@ -18,7 +18,7 @@ new Nav();
 
 
 
-function GoodsList(){
+function Pagintion(){
     this.goods_list_pro = $('.goods_list_pro');
     this.btnList = $('.btnList');
     this.next = $('.next');
@@ -27,13 +27,21 @@ function GoodsList(){
     this.getData()
 
 }
-GoodsList.prototype.getData = function(){
+Pagintion.prototype.getData = function(){
     let _this = this;
+    
+    this.r = window.location.search.substr(1);
+    // console.log(window.location.search)
+    this.keyWord = this.r.split('=')[1];
+    // console.log(this.keyWord)
+    
     $.ajax('../data/goods_list.json')
     .then( (res) => {
         // _this.run(res)
-        _this.pageNum = Math.ceil(res.casio.length / 30);
-
+        // console.log(res)
+        // console.log(res[_this.keyWord])
+        _this.pageNum = Math.ceil(res[_this.keyWord].length / 30);
+        console.log(_this.pageNum)
         for(let i = 0 ; i < _this.pageNum ; i++){
             createTag = document.createElement('a');
             $(createTag).text(i+1);
@@ -43,8 +51,6 @@ GoodsList.prototype.getData = function(){
         
         _this.btnList.css({'width' : _this.pageNum * 52 + 200})
         _this.render(res,1)
-
-
 
         this.aBtn = $('.btnList .page');
         // console.log(this.aBtn)
@@ -81,48 +87,24 @@ GoodsList.prototype.getData = function(){
 
     })
 }
-
-
-GoodsList.prototype.render = function(res,n){
+Pagintion.prototype.render = function(res,n){
     // 每次调用先清空，防止累加
     this.goods_list_pro.html('') ;
     // console.log($(this))
     var str = ''
-    for(let i = (n - 1) * 30 ; i < Math.min(res.casio.length,30 * n) ; i++){
+    for(let i = (n - 1) * 30 ; i < Math.min(res[this.keyWord].length,30 * n) ; i++){
         str += `
             <div class="goods_list_pro_list">
-                <img src="${res.casio[i].img}" alt="">
+                <img src="${res[this.keyWord][i].img}" alt="">
                 <div class="goods_list_pro_list_title">
-                    <p><em>${res.casio[i].brand}</em>${res.casio[i].title}</p>
+                    <p><em>${res[this.keyWord][i].brand}</em>${res[this.keyWord][i].title}</p>
                 </div>
-                <h6>￥${res.casio[i].price}</h6>
+                <h6>￥${res[this.keyWord][i].price}</h6>
                 <span>标品</span>
             </div>
         `
     }
     this.goods_list_pro.append(str)
 }
-// console.log(this.render(1));
+new Pagintion()
 
-
-
-// GoodsList.prototype.run = function(res){
-//     var str = '' ;
-//     console.log(res.casio)
-//     for(var i = 0 ; i < res.casio.length ; i++){
-//         str += `
-//             <div class="goods_list_pro_list">
-//                 <img src="${res.casio[i].img}" alt="">
-//                 <div class="goods_list_pro_list_title">
-//                     <p><em>${res.casio[i].brand}</em>${res.casio[i].title}</p>
-//                 </div>
-//                 <h6>￥${res.casio[i].price}</h6>
-//                 <span>标品</span>
-//             </div>
-//         `
-//     }
-//     this.goods_list_pro.append(str)
-// }
-
-
-new GoodsList()

@@ -164,7 +164,39 @@ DetailTitle.prototype.getData = function(){
                 _this.bigBox.eq(0).addClass('big_box_show');
                 _this.detailConMainLBotImgBox.eq(0).addClass('border_color');
 
-              
+                
+
+                function Num(){
+                    this.number = $('.detail_con_main_c_number p input');
+                    this.add = $('.detail_con_main_c_number p span').eq(0);
+                    this.minus = $('.detail_con_main_c_number p span').eq(1);
+                    this.count = 1;
+                    this.eventBind()
+                }
+                Num.prototype.addNum = function(){
+                    this.count++;
+                    this.number.val(this.count)
+                }
+                Num.prototype.minusNum = function(){
+                    if(this.count <= 1){
+                        this.count == 1;
+                    }else{
+                        this.count--;
+                    }
+                    this.number.val(this.count)
+                }
+                Num.prototype.eventBind = function(){
+                    this.add.on('click',this.addNum.bind(this));
+                    this.minus.on('click',this.minusNum.bind(this))
+                }
+
+                new Num()
+
+
+
+
+
+
                 function ChangeClass(){
                     this.detailConMainLBotImgBox = $('.detail_con_main_l_bot_imgBox'); 
                     this.smallBox = $('.small_box');  
@@ -225,8 +257,8 @@ DetailTitle.prototype.getData = function(){
     })
 }
 
-
 new DetailTitle();
+
 
 
 
