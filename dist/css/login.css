@@ -1,0 +1,106 @@
+html, body {
+  width: 100%;
+  background: #f3f5f6; }
+
+section {
+  width: 990px;
+  height: 600px;
+  background: #fff;
+  margin: 0 auto;
+  margin-top: 30px;
+  box-shadow: 5px 5px 20px #ccc; }
+  section h1 {
+    width: 310px;
+    height: 125px;
+    margin: 0 auto;
+    padding-top: 35px; }
+    section h1 img {
+      width: 114px;
+      height: 50px;
+      margin: 0 auto; }
+  section .title {
+    width: 310px;
+    height: 44px;
+    font-size: 18px;
+    line-height: 44px;
+    color: #030000;
+    margin: 0 auto;
+    text-align: center; }
+  section .name_input {
+    width: 310px;
+    height: 40px;
+    margin: 0 auto;
+    margin-left: 345px;
+    position: relative;
+    margin-top: 40px; }
+    section .name_input input {
+      width: 260px;
+      height: 40px;
+      border: 1px solid #ccc;
+      padding-left: 10px;
+      padding-left: 50px; }
+    section .name_input h2 {
+      width: 42px;
+      height: 14px;
+      font-size: 14px;
+      line-height: 14px;
+      color: #8a8989;
+      position: absolute;
+      top: 14px;
+      left: 10px;
+      font-weight: 200; }
+  section .password_input {
+    width: 325spx;
+    height: 40px;
+    margin: 40px auto;
+    margin-left: 345px;
+    position: relative; }
+    section .password_input input {
+      width: 310px;
+      height: 40px;
+      border: 1px solid #ccc;
+      padding-left: 10px; }
+    section .password_input h2 {
+      width: 42px;
+      height: 14px;
+      font-size: 14px;
+      line-height: 14px;
+      color: #8a8989;
+      position: absolute;
+      top: 14px;
+      left: 10px;
+      font-weight: 200; }
+  section .autologin {
+    width: 310px;
+    height: 12px;
+    margin: 0 auto;
+    vertical-align: middle; }
+    section .autologin h3 {
+      display: inline-block;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+      color: #757575; }
+  section button {
+    width: 310px;
+    height: 36px;
+    background: #E73441;
+    font-size: 18px;
+    line-height: 36px;
+    text-align: center;
+    border: 0;
+    color: #fff;
+    margin: 20px auto; }
+  section .register_btn {
+    width: 310px;
+    height: 20px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #ccc;
+    text-align: center;
+    font-weight: 300; }
+    section .register_btn a {
+      font-size: 12px;
+      color: red; }
